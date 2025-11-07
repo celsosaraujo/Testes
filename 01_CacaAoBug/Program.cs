@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 
 namespace CacaAoBug
 {
@@ -6,19 +7,42 @@ namespace CacaAoBug
     {
         static void Main(string[] args)
         {
+            
+            
             Console.WriteLine("=== Sistema de Notas do Aluno ===");
 
             Console.Write("Informe o nome do aluno: ");
             string nome = Console.ReadLine();
 
-            Console.Write("Digite a primeira nota: ");
-            double nota1 = Convert.ToDouble(Console.ReadLine());
+            double nota1, nota2, nota3;
+
+            while (true)
+            {
+
+                Console.Write("Digite a primeira nota: ");
+                nota1 = Convert.ToDouble(Console.ReadLine());
+
+                Console.WriteLine(nota1 < 0 || nota1 > 10 ? "Nota Inválida" : "Nota Válida");
+
+
+                break;
+            }
+           
+
+
 
             Console.Write("Digite a segunda nota: ");
-            double nota2 = Convert.ToDouble(Console.ReadLine());
+                 nota2 = Convert.ToDouble(Console.ReadLine());
 
-            Console.Write("Digite a terceira nota: ");
-            double nota3 = Convert.ToDouble(Console.ReadLine());
+                Console.Write("Digite a terceira nota: ");
+                 nota3 = Convert.ToDouble(Console.ReadLine());
+
+           
+
+
+
+
+
 
             double media = (nota1 + nota2 + nota3) / 2;
 
@@ -56,3 +80,6 @@ namespace CacaAoBug
         }
     }
 }
+
+///------------------------------------------------------
+/// 1º
