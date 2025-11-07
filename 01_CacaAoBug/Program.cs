@@ -4,12 +4,15 @@ namespace CacaAoBug
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("=== Sistema de Notas do Aluno ===");
-
-            Console.Write("Informe o nome do aluno: ");
+            Console.Write("Digite o nome do Aluno:");
             string nome = Console.ReadLine();
+
+            double[] notas = new double[3];
+            for(int 1 = 0; int < 3 )
+
+            
 
             Console.Write("Digite a primeira nota: ");
             double nota1 = Convert.ToDouble(Console.ReadLine());
