@@ -8,8 +8,38 @@ namespace CacaAoBug
         {
             Console.WriteLine("=== Sistema de Notas do Aluno ===");
 
-            Console.Write("Informe o nome do aluno: ");
-            string nome = Console.ReadLine();
+            string nome;
+            while (true)
+            {
+                Console.Write("Informe o nome do aluno: ");
+                nome = Console.ReadLine();
+
+                bool valido = true;
+
+                // Verifica se o nome tem apenas letras e espaços
+                foreach (char c in nome)
+                {
+                    if (!char.IsLetter(c) && c != ' ')
+                    {
+                        valido = false;
+                        break;
+                    }
+                }
+
+                if (string.IsNullOrWhiteSpace(nome))
+                {
+                    valido = false;
+                }
+
+                if (valido)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("❌ Nome inválido! Digite apenas letras e espaços.\n");
+                }
+            }
 
             Console.Write("Digite a primeira nota: ");
             double nota1 = Convert.ToDouble(Console.ReadLine());
@@ -20,21 +50,21 @@ namespace CacaAoBug
             Console.Write("Digite a terceira nota: ");
             double nota3 = Convert.ToDouble(Console.ReadLine());
 
-            double media = (nota1 + nota2 + nota3) / 2;
+            double media = (nota1 + nota2 + nota3) / 3;
 
             Console.WriteLine($"\nMédia de {nome}: {media}");
 
             if (media >= 7)
             {
-                Console.WriteLine("Situação: Reprovado 😢");
+                Console.WriteLine("Situação: Aprovado");
             }
-            else if (media >= 5)
+            else if (media >= 5 )
             {
                 Console.WriteLine("Situação: Exame Final");
             }
             else
             {
-                Console.WriteLine("Situação: Aprovado 🎉");
+                Console.WriteLine("Situação: Reprovado");
             }
 
             Console.WriteLine("\n=== Estatísticas da Turma ===");
@@ -42,17 +72,27 @@ namespace CacaAoBug
             int totalAlunos = 5;
             int aprovados = 0;
 
+           
             for (int i = 1; i <= totalAlunos; i++)
             {
-                if (i % 2 == 0)
+                Console.Write($"O aluno {i} foi aprovado? (s/n): ");
+                string resp = Console.ReadLine().ToLower();
+
+                if (resp == "s")
+                {
                     aprovados++;
+                }
             }
 
-            double percAprov = (aprovados / totalAlunos) * 100;
-            Console.WriteLine($"Taxa de aprovação: {percAprov}%");
+            double percAprov = ((double)aprovados / totalAlunos) * 100.0;
 
-            Console.WriteLine("\nFim do programa!");
+            Console.WriteLine($"\nTotal de alunos: {totalAlunos}");
+            Console.WriteLine($"Aprovados: {aprovados}");
+            Console.WriteLine($"Taxa de aprovação: {percAprov:F2}%");
+
+            Console.WriteLine("\n=== Fim do programa ===");
             Console.ReadKey();
+
         }
     }
 }
