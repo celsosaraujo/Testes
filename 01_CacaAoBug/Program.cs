@@ -23,9 +23,14 @@ namespace CacaAoBug
                 nota1 = Convert.ToDouble(Console.ReadLine());
 
                 Console.WriteLine(nota1 < 0 || nota1 > 10 ? "Nota Inválida" : "Nota Válida");
+                if (nota1 >= 0 && nota1 <= 10)
+                {
+                    Console.WriteLine("Nota válida!");
+                    break;
+                }
 
 
-                break;
+
             }
            
 
