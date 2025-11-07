@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
+using _01_CacaAoBug;
 
 namespace CacaAoBug
 {
@@ -6,27 +10,38 @@ namespace CacaAoBug
     {
         static void Main(string[] args)
         {
+            string nome;
             Console.WriteLine("=== Sistema de Notas do Aluno ===");
+            while (true)
+            {
+                Console.Write("Informe o nome do aluno: ");
+                nome = Console.ReadLine();
+                if (Regex.IsMatch(nome, @"^[A-Za-zÀ-ÿ\s]+$"))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Digite um nome válido\n");
+                }
+            }
 
-            Console.Write("Informe o nome do aluno: ");
-            string nome = Console.ReadLine();
+            double nota1 = ValidaNota.Validacao("Digite a 1° Nota: ");
+            
+            double nota2 = ValidaNota.Validacao("Digite a 2° Nota: ");
 
-            Console.Write("Digite a primeira nota: ");
-            double nota1 = Convert.ToDouble(Console.ReadLine());
+            double nota3 = ValidaNota.Validacao("Digite a 3° Nota: ");
 
-            Console.Write("Digite a segunda nota: ");
-            double nota2 = Convert.ToDouble(Console.ReadLine());
 
-            Console.Write("Digite a terceira nota: ");
-            double nota3 = Convert.ToDouble(Console.ReadLine());
 
-            double media = (nota1 + nota2 + nota3) / 2;
+
+            double media = (nota1 + nota2 + nota3) / 3;
 
             Console.WriteLine($"\nMédia de {nome}: {media}");
 
             if (media >= 7)
             {
-                Console.WriteLine("Situação: Reprovado 😢");
+                Console.WriteLine("Situação: Aprovado ");
             }
             else if (media >= 5)
             {
@@ -34,8 +49,9 @@ namespace CacaAoBug
             }
             else
             {
-                Console.WriteLine("Situação: Aprovado 🎉");
+                Console.WriteLine("Situação: Reprovado");
             }
+
 
             Console.WriteLine("\n=== Estatísticas da Turma ===");
 
