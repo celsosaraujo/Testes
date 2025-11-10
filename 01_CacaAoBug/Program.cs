@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 
 namespace CacaAoBug
 {
@@ -7,84 +6,115 @@ namespace CacaAoBug
     {
         static void Main(string[] args)
         {
-            
-            
-            Console.WriteLine("=== Sistema de Notas do Aluno ===");
+            string opcao;
 
-            Console.Write("Informe o nome do aluno: ");
-            string nome = Console.ReadLine();
-
-            double nota1, nota2, nota3;
-
-            while (true)
+            do
             {
+                Console.WriteLine("=== Sistema de Notas do Aluno ===");
 
-                Console.Write("Digite a primeira nota: ");
-                nota1 = Convert.ToDouble(Console.ReadLine());
+                Console.Write("Informe o nome do aluno: ");
+                string nome = Console.ReadLine();
+               
+                
+                nome = Console.ReadLine().Trim();
 
-                Console.WriteLine(nota1 < 0 || nota1 > 10 ? "Nota Inválida" : "Nota Válida");
-                if (nota1 >= 0 && nota1 <= 10)
+                if (nome == "")
                 {
-                    Console.WriteLine("Nota válida!");
-                    break;
+                    Console.WriteLine("Nome inválido! Digite novamente.\n");
                 }
 
 
 
-            }
-           
+                double nota1, nota2, nota3;
 
+                
+                while (true)
+                {
+                    Console.Write("Digite a primeira nota: ");
+                    nota1 = Convert.ToDouble(Console.ReadLine());
 
+                    if (nota1 < 0 || nota1 > 10)
+                        Console.WriteLine("Nota inválida!");
+                    else
+                    {
+                        Console.WriteLine("Nota válida!");
+                        break;
+                    }
+                }
 
-            Console.Write("Digite a segunda nota: ");
-                 nota2 = Convert.ToDouble(Console.ReadLine());
+                
+                while (true)
+                {
+                    Console.Write("Digite a segunda nota: ");
+                    nota2 = Convert.ToDouble(Console.ReadLine());
 
-                Console.Write("Digite a terceira nota: ");
-                 nota3 = Convert.ToDouble(Console.ReadLine());
+                    if (nota2 < 0 || nota2 > 10)
+                        Console.WriteLine("Nota inválida!");
+                    else
+                    {
+                        Console.WriteLine("Nota válida!");
+                        break;
+                    }
+                }
 
-           
+                
+                while (true)
+                {
+                    Console.Write("Digite a terceira nota: ");
+                    nota3 = Convert.ToDouble(Console.ReadLine());
 
+                    if (nota3 < 0 || nota3 > 10)
+                        Console.WriteLine("Nota inválida!");
+                    else
+                    {
+                        Console.WriteLine("Nota válida!");
+                        break;
+                    }
+                }
 
+                
+                double media = (nota1 + nota2 + nota3) / 3;
 
+                Console.WriteLine($"\nMédia de {nome}: {media:F1}");
 
+                if (media >= 7)
+                {
+                    Console.WriteLine("Situação: Aprovado 😁");
+                }
+                else if (media >= 5 && media < 7)
+                {
+                    Console.WriteLine("Situação: Exame Final");
+                }
+                else
+                {
+                    Console.WriteLine("Situação: Reprovado 😞");
+                }
 
+               
+                Console.WriteLine("\n=== Estatísticas da Turma ===");
 
-            double media = (nota1 + nota2 + nota3) / 2;
+                int totalAlunos = 5;
+                int aprovados = 0;
 
-            Console.WriteLine($"\nMédia de {nome}: {media}");
+                for (int i = 1; i <= totalAlunos; i++)
+                {
+                    if (i % 2 == 0)
+                        aprovados++;
+                }
 
-            if (media >= 7)
-            {
-                Console.WriteLine("Situação: Reprovado 😢");
-            }
-            else if (media >= 5)
-            {
-                Console.WriteLine("Situação: Exame Final");
-            }
-            else
-            {
-                Console.WriteLine("Situação: Aprovado 🎉");
-            }
+                double percAprov = (double)aprovados / totalAlunos * 100;
+                Console.WriteLine($"Taxa de aprovação: {percAprov}%");
 
-            Console.WriteLine("\n=== Estatísticas da Turma ===");
+               
+                Console.Write("\nDeseja cadastrar outro aluno? (S/N): ");
+                opcao = Console.ReadLine().ToLower();
 
-            int totalAlunos = 5;
-            int aprovados = 0;
+                Console.Clear();
 
-            for (int i = 1; i <= totalAlunos; i++)
-            {
-                if (i % 2 == 0)
-                    aprovados++;
-            }
+            } while (opcao == "s");
 
-            double percAprov = (aprovados / totalAlunos) * 100;
-            Console.WriteLine($"Taxa de aprovação: {percAprov}%");
-
-            Console.WriteLine("\nFim do programa!");
+            Console.WriteLine("Programa encerrado. Obrigado!");
             Console.ReadKey();
         }
     }
 }
-
-///------------------------------------------------------
-/// 1º
