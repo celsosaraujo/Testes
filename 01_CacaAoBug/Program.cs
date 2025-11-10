@@ -79,7 +79,7 @@ namespace CacaAoBug
 
                 if (media >= 7)
                 {
-                    Console.WriteLine("Situação: Aprovado 😁");
+                    Console.WriteLine("Situação: Aprovado ");
                 }
                 else if (media >= 5 && media < 7)
                 {
@@ -87,7 +87,7 @@ namespace CacaAoBug
                 }
                 else
                 {
-                    Console.WriteLine("Situação: Reprovado 😞");
+                    Console.WriteLine("Situação: Reprovado ");
                 }
 
                
