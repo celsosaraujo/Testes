@@ -11,7 +11,7 @@ namespace _01_CacaAoBug
         public static double Validacao(string mensagem)
         {
             double nota;
-            double media;
+            
 
             while (true)
             {
